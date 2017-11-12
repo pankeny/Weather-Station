@@ -21,6 +21,10 @@ public class WeatherConditions {
 	Long pressure;
 	String url;
 	
+	public WeatherConditions() {
+		
+	}
+	
 	public WeatherConditions(String cityName) {
 		this.cityName = cityName;
 		
