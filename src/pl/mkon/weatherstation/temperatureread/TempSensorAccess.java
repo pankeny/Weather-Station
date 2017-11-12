@@ -4,14 +4,17 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
 
+import org.json.JSONObject;
+
+import netscape.javascript.JSException;
+
 public class TempSensorAccess {
-	private String name;
+	
 	private String url;
 	
-	public TempSensorAccess(String name)
+	public TempSensorAccess(String cityName)
 	{
-		this.name = name;
-		this.setURL(name);
+		this.setURL(cityName);
 	}
 	
 	public void setURL(String name)
@@ -19,17 +22,17 @@ public class TempSensorAccess {
 		this.url = "http://api.openweathermap.org/data/2.5/weather?q=" + name + "&APPID=af319cd969dff7d8c42768f6f0d8c979&units=metric";
 	}
 	
-	public int getTemp()
+	public String getTemp() throws Exception
 	{
-		int temp = 0;
-		
-		try {
-			JSON json;
-		}catch () {
 			
+		try {
+			JSONObject json = new JSONObject(readUrl(this.url));
+			return (String) json.get("main.temp");
+		}catch (JSException e) {
+			e.printStackTrace();
 		}
 		
-		return temp;
+		return null;
 	}
 	
 	private static String readUrl(String urlString) throws Exception
