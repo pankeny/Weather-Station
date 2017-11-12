@@ -26,6 +26,7 @@ public class WeatherDisplayController {
 	private TextField cityNameTextField;
 	
 	private MainApp mainApp;
+	private final String DEGREE  = "\u2103";
 	
 	@FXML
 	private void initialize() {
@@ -35,15 +36,15 @@ public class WeatherDisplayController {
 	
 	@FXML
 	private void handleCheckTheWeather() {
-		if (cityNameLabel.getText().length() != 0) {
-			WeatherConditions city = new WeatherConditions(cityNameLabel.getText());
+		if (cityNameTextField.getText().length() != 0) {
+			WeatherConditions city = new WeatherConditions(cityNameTextField.getText());
 			showWeatherConditions(city);
 		} else {
 	        Alert alert = new Alert(AlertType.WARNING);
 	        alert.initOwner(mainApp.getPrimaryStage());
 	        alert.setTitle("Empty field");
 	        alert.setHeaderText("No city typed in text field");
-	        alert.setContentText("Please type city name to chech current weather.");
+	        alert.setContentText("Please type city name to check current weather.");
 
 	        alert.showAndWait();
 		}
@@ -62,12 +63,12 @@ public class WeatherDisplayController {
 	private void showWeatherConditions(WeatherConditions city)
 	{
 		if (city != null) {
-			cityNameLabel.setText("Weather for " + city.getCityName());
-			temperatureLabel.setText((new String()).valueOf(city.getTemperature()));
-			cloudsLabel.setText((new String()).valueOf(city.getClouds()));
-			humidityLabel.setText((new String()).valueOf(city.getHumidity()));
-			windSpeedLabel.setText((new String()).valueOf(city.getWindSpeed()));
-			pressureLabel.setText((new String()).valueOf(city.getPressure()));
+			cityNameLabel.setText("Weather for " + (city.getCityName()));
+			temperatureLabel.setText( (new String()).valueOf(city.getTemperature()) + DEGREE );
+			cloudsLabel.setText( (new String()).valueOf(city.getClouds()) + "%" );
+			humidityLabel.setText((new String()).valueOf(city.getHumidity()) + "%" );
+			windSpeedLabel.setText((new String()).valueOf(city.getWindSpeed()) + "m/s" );
+			pressureLabel.setText((new String()).valueOf(city.getPressure()) + "hPa" );
 		} else {
 			cityNameLabel.setText("");
 			temperatureLabel.setText("");

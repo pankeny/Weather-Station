@@ -11,7 +11,7 @@ import org.json.simple.JSONValue;
 
 public class WeatherConditions {
 	
-	final String DEGREE  = "\u2103";
+	private final String DEGREE  = "\u2103";
 	
 	String cityName;
 	Long temperature;
