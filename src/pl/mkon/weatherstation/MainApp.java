@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import pl.mkon.weatherstation.view.WeatherDisplayController;
 
 public class MainApp extends Application {
 	private Stage primaryStage;
@@ -46,9 +47,13 @@ public class MainApp extends Application {
 			
 			rootLayout.setCenter(WeatherDisplay);
 			
+			WeatherDisplayController controller = loader.getController();
+			controller.setMainApp(this);
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
 	}
 
 	public static void main(String[] args) {
