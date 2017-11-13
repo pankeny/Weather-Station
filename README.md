@@ -8,6 +8,6 @@
 * displays result in console.
 
 ### Soon
-* GUI,
-* more parameters to display,
+* GUI,//DONE
+* more parameters to display,//DONE
 
